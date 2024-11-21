@@ -1,14 +1,21 @@
-import express from "express";
+import express, { urlencoded } from "express";
 import dotenv from "dotenv";
+import route from "./routes/index.js";
 
 const app = express();
 
-const PORT = process.env.PORT || 9001;
-
 dotenv.config();
 
-app.get("/", (req, res) => {
-  res.send("Deu certo!");
-});
+const PORT = process.env.PORT || 9001;
+
+app.use(express.json());
+
+app.use(
+  urlencoded({
+    extended: true,
+  })
+);
+
+app.use(route);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
