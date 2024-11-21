@@ -5,7 +5,7 @@ import productRoute from "./productRoute.js";
 const route = Router();
 
 route.get("/", (req, res) => {
-  res.send("Deu certo!");
+  res.send("Seja bem-vindo!");
 });
 
 route.use("/user", userRoute);
